@@ -1,20 +1,32 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Signin = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [showpass, SetShowpass] = useState(false);
+  const { userSignIn } = useContext(AuthContext);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const email = form.get("email").trim();
     const password = form.get("password").trim();
-
-    const newUser = {
-      email,
-      password,
-    };
-
-    console.log(newUser);
+    userSignIn(email, password)
+      .then((result) => {
+        console.log(result.user);
+        swal("cool!", "Successfully Sign in ", "success");
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.message);
+        swal(
+          "Opps!",
+          "Something went wrong, email/password not Valid!",
+          "error"
+        );
+      });
   };
   return (
     <div className="bg-emerald-400">

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Signup = () => {
   const [showpass, SetShowpass] = useState(false);
+  const { createUser, profileUpdate } = useContext(AuthContext);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -14,7 +16,7 @@ const Signup = () => {
     const password = form.get("password").trim();
     const cpassword = form.get("cpassword").trim();
     const photo = form.get("photo").trim();
-
+    const fullName = fname + " " + lname;
     const newUser = {
       fname,
       lname,
@@ -40,7 +42,16 @@ const Signup = () => {
         swal("Opps!", "Don't have a special character", "error");
         return;
       } else {
-        console.log(newUser);
+        createUser(email, password)
+          .then((result) => {
+            profileUpdate(fullName, photo);
+            console.log(result.user);
+            swal("Cool!", "User Created Successfully", "success");
+          })
+          .catch((error) => {
+            swal("Opps!", "Something went wrong, try again!", "error");
+            console.log(error.message);
+          });
       }
     };
     passwordValidation(password, cpassword);

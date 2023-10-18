@@ -8,6 +8,7 @@ import Profile from "../Layout/Profile/Profile";
 import Root from "../Layout/Root/Root";
 import Signin from "../Layout/Signin/Signin";
 import Signup from "../Layout/Signup/Signup";
+import PrivateRouter from "../Layout/PrivateRouter/PrivateRouter";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -34,7 +35,7 @@ const Router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <DashBoard />,
+    element: <PrivateRouter><DashBoard /></PrivateRouter>,
     errorElement: <ErrorPage />,
     children: [
       {
