@@ -1,14 +1,48 @@
+import { useContext } from "react";
+import swal from "sweetalert";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 const AddProduct = () => {
+  const { user } = useContext(AuthContext);
   const handleNewProduct = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const productName = form.get("productName").trim();
     const brandName = form.get("brandName").trim();
     const productPrice = form.get("productPrice").trim();
+    const productCat = form.get("productCat").trim();
     const productRating = form.get("productRating").trim();
     const productImage = form.get("productImage").trim();
-
-    
+    const productDescription = form.get("productDescription").trim();
+    const userName = user.displayName;
+    const userEmail = user.email;
+    const userId = user.uid;
+    const product = {
+      productName,
+      brandName,
+      productCat,
+      productPrice,
+      productRating,
+      productImage,
+      productDescription,
+      userName,
+      userEmail,
+      userId,
+    };
+    fetch("http://localhost:5000/products", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(product),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          swal("Cool!", "Product Added Success fully", "success");
+          e.target.reset();
+        }
+      });
   };
   return (
     <div className="w-full ">
@@ -53,10 +87,11 @@ const AddProduct = () => {
             <label htmlFor="productCategory" className="font-medium font-xl">
               Product Category
             </label>
-            <select className="select select-bordered select-info w-full">
-              <option disabled selected>
-                Select Product Categroy
-              </option>
+            <select
+              name="productCat"
+              className="select select-bordered select-info w-full"
+            >
+              <option disabled>Select Product Categroy</option>
               <option value="computer">DeshTop</option>
               <option value="laptop">Laptop</option>
               <option value="mobile">Mobile</option>

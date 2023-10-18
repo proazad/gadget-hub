@@ -1,12 +1,12 @@
 import {
-    GoogleAuthProvider,
-    createUserWithEmailAndPassword,
-    getAuth,
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-    signInWithPopup,
-    signOut,
-    updateProfile,
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";

@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Outlet } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Navbar from "./Navbar/Navbar";
-import RightSidebar from "./RightSidebar/RightSidebar";
+import RightSidebar from "../../Components/RightSidebar/RightSidebar";
 
 const DashBoard = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="bg-blue-100">
       <div className="container mx-auto">
@@ -12,14 +15,21 @@ const DashBoard = () => {
             <div className="flex items-center   gap-4 mb-20">
               <div className="avatar">
                 <div className="w-16 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
-                  <img src="https://i.ibb.co/LPY431r/azad.jpg" />
+                  <img
+                    src={
+                      user?.photoURL || "https://i.ibb.co/2ndnLqH/avatar.jpg"
+                    }
+                  />
                 </div>
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-neutral">
-                  Azad Hossain
+                  {user.displayName}
                 </h2>
                 <h3 className="text-xl font-semibold text-neutral">Admin</h3>
+                <h3 className="text-xl font-semibold text-neutral">
+                  {user.email}
+                </h3>
               </div>
             </div>
             <RightSidebar />

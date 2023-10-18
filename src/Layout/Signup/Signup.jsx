@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 const Signup = () => {
   const [showpass, SetShowpass] = useState(false);
+  const navigate = useNavigate();
   const { createUser, profileUpdate } = useContext(AuthContext);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
@@ -17,15 +19,6 @@ const Signup = () => {
     const cpassword = form.get("cpassword").trim();
     const photo = form.get("photo").trim();
     const fullName = fname + " " + lname;
-    const newUser = {
-      fname,
-      lname,
-      birthdate,
-      email,
-      password,
-      cpassword,
-      photo,
-    };
 
     const passwordValidation = (password, cpassword) => {
       const passwordRegex = /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\/-]).+$/;
@@ -44,9 +37,35 @@ const Signup = () => {
       } else {
         createUser(email, password)
           .then((result) => {
-            profileUpdate(fullName, photo);
-            console.log(result.user);
-            swal("Cool!", "User Created Successfully", "success");
+            const uid = result.user.uid;
+            const userSignUpAt = result.user.metadata.creationTime;
+            const lastSignInTime = result.user.metadata.lastSignInTime;
+            const newUser = {
+              fname,
+              lname,
+              birthdate,
+              email,
+              password,
+              photo,
+              userSignUpAt,
+              lastSignInTime,
+              uid,
+            };
+            fetch("http://localhost:5000/users", {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(newUser),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.acknowledged) {
+                  profileUpdate(fullName, photo);
+                  swal("Cool!", "User Created Successfully", "success");
+                  navigate("/");
+                }
+              });
           })
           .catch((error) => {
             swal("Opps!", "Something went wrong, try again!", "error");

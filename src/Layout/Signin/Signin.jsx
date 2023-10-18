@@ -6,8 +6,8 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Signin = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [showpass, SetShowpass] = useState(false);
   const { userSignIn } = useContext(AuthContext);
+  const [showpass, SetShowpass] = useState(false);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
