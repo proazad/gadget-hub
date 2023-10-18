@@ -1,10 +1,12 @@
 import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
-const AddSlider = () => {
+const UpdateSlider = () => {
   const { user } = useContext(AuthContext);
-  const handleNewSlider = (e) => {
+  const loadedSlider = useLoaderData();
+  const handleUpdateSlider = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
     const sliderTitle = form.get("sliderTitle").trim();
@@ -13,7 +15,7 @@ const AddSlider = () => {
     const userName = user.displayName;
     const userEmail = user.email;
     const userId = user.uid;
-    const slider = {
+    const updateSlider = {
       sliderTitle,
       sliderImage,
       sliderDescription,
@@ -21,27 +23,26 @@ const AddSlider = () => {
       userEmail,
       userId,
     };
-    fetch("http://localhost:5000/sliders", {
-      method: "POST",
+    fetch(`http://localhost:5000/sliders/${loadedSlider._id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(slider),
+      body: JSON.stringify(updateSlider),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.acknowledged) {
-          swal("Cool!", "Slider Added Successfully", "success");
-          e.target.reset();
+        if (data.modifiedCount>0) {
+          swal("Cool!", "Slider Updated Successfully", "success");
         }
       });
   };
   return (
     <div className="w-full ">
       <h2 className="text-3xl font-bold uppercase mb-5 text-center underline">
-        Add a New Slider
+        Update Slider
       </h2>
-      <form onSubmit={handleNewSlider}>
+      <form onSubmit={handleUpdateSlider}>
         <div className="flex gap-5 mt-3">
           <div className="form-control w-full relative">
             <label htmlFor="sliderTitle" className="font-medium font-xl">
@@ -52,7 +53,7 @@ const AddSlider = () => {
               name="sliderTitle"
               id="sliderTitle"
               className="input input-bordered input-info"
-              placeholder="Enter Slider Title"
+              defaultValue={loadedSlider.sliderTitle}
               required
             />
             <span className="text-red-700 text-2xl absolute right-0">*</span>
@@ -66,7 +67,7 @@ const AddSlider = () => {
               name="sliderImage"
               id="sliderImage"
               className="input input-bordered input-info"
-              placeholder="Enter Slider Image Url"
+              defaultValue={loadedSlider.sliderImage}
               required
             />
             <span className="text-red-700 text-2xl absolute right-0">*</span>
@@ -81,13 +82,13 @@ const AddSlider = () => {
             className="textarea textarea-accent"
             id="sliderDescription"
             name="sliderDescription"
-            placeholder="Add Product Description"
+            defaultValue={loadedSlider.sliderDescription}
           ></textarea>
           <span className="text-red-700 text-2xl absolute right-0">*</span>
         </div>
         <div className="form-control mt-3">
           <button type="submit" className="btn btn-accent">
-            Add New Slider
+           Update
           </button>
         </div>
       </form>
@@ -95,4 +96,4 @@ const AddSlider = () => {
   );
 };
 
-export default AddSlider;
+export default UpdateSlider;

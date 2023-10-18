@@ -5,7 +5,9 @@ import AddSlider from "../Components/AddSlider/AddSlider";
 import AllBrand from "../Components/AllBrand/AllBrand";
 import AllProduct from "../Components/AllProduct/AllProduct";
 import Allslider from "../Components/Allslider/Allslider";
+import UpdateBrand from "../Components/UpdateBrand/UpdateBrand";
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
+import UpdateSlider from "../Components/UpdateSlider/UpdateSlider";
 import DashBoard from "../Layout/Admin/DashBoard";
 import ErrorPage from "../Layout/ErrorPage/ErrorPage";
 import Home from "../Layout/Home/Home";
@@ -69,10 +71,17 @@ const Router = createBrowserRouter([
       {
         path: "/admin/allbrand",
         element: <AllBrand />,
+        loader: () => fetch("http://localhost:5000/brands"),
       },
       {
         path: "/admin/addbrand",
         element: <AddBrand />,
+      },
+      {
+        path: "/admin/brandupdate/:id",
+        element: <UpdateBrand />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/brands/${params.id}`),
       },
       {
         path: "/admin/addslider",
@@ -81,6 +90,13 @@ const Router = createBrowserRouter([
       {
         path: "/admin/allslider",
         element: <Allslider />,
+        loader: () => fetch("http://localhost:5000/sliders"),
+      },
+      {
+        path: "/admin/updateslider/:id",
+        element: <UpdateSlider />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/sliders/${params.id}`),
       },
     ],
   },

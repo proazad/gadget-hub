@@ -3,7 +3,6 @@ import swal from "sweetalert";
 
 const UpdateProduct = () => {
   const loadedProduct = useLoaderData();
-  console.log(loadedProduct);
   const handleUpdateProduct = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -32,8 +31,9 @@ const UpdateProduct = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        swal("Cool!", "Product Updated Success fully", "success");
-        console.log(data);
+        if (data.modifiedCount > 0) {
+          swal("Cool!", "Product Updated Successfully", "success");
+        }
       });
   };
   return (
