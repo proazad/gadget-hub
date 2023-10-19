@@ -44,7 +44,7 @@ const AllBrand = () => {
                 <td>{brand.brandName}</td>
                 <td className="space-x-4 w-[260px]">
                   <Link
-                    to={`/admin/brandupdate/${brand._id}`}
+                    to={`/user/brandupdate/${brand._id}`}
                     className="btn btn-accent"
                   >
                     Update

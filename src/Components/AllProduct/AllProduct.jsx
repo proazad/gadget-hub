@@ -50,7 +50,7 @@ const AllProduct = () => {
                 <td>{product.productFeatured}</td>
                 <td className="space-x-4 w-[260px]">
                   <Link
-                    to={`/admin/productupdate/${product._id}`}
+                    to={`/user/productupdate/${product._id}`}
                     className="btn btn-accent"
                   >
                     Update

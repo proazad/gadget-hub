@@ -71,7 +71,7 @@ const Signin = () => {
 
             <div className="form-control mt-3">
               <button type="submit" className="btn btn-accent">
-                Submit
+                Sign in
               </button>
             </div>
             <div className="form-control mt-3">

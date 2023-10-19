@@ -14,7 +14,7 @@ const RightSidebar = () => {
       <ul className="menu menu-vertical gap-3 px-1">
         <li>
           <NavLink
-            to="/admin"
+            to="/user"
             className="px-3 text-xl flex gap-4 items-center font-bold"
           >
             <MdOutlineDashboard />
@@ -29,7 +29,7 @@ const RightSidebar = () => {
             <ul className="p-2">
               <li>
                 <NavLink
-                  to="/admin/allproduct"
+                  to="/user/allproduct"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <BsWallet2 />
@@ -38,7 +38,7 @@ const RightSidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/admin/addproduct"
+                  to="/user/addproduct"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <MdAddTask />
@@ -57,7 +57,7 @@ const RightSidebar = () => {
             <ul className="p-2">
               <li>
                 <NavLink
-                  to="/admin/allbrand"
+                  to="/user/allbrand"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <BsWallet2 />
@@ -66,7 +66,7 @@ const RightSidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/admin/addbrand"
+                  to="/user/addbrand"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <MdAddTask />
@@ -85,7 +85,7 @@ const RightSidebar = () => {
             <ul className="p-2">
               <li>
                 <NavLink
-                  to="/admin/allslider"
+                  to="/user/allslider"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <BsWallet2 />
@@ -94,7 +94,7 @@ const RightSidebar = () => {
               </li>
               <li>
                 <NavLink
-                  to="/admin/addslider"
+                  to="/user/addslider"
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <MdAddTask />

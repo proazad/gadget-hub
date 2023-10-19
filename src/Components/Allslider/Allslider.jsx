@@ -46,7 +46,7 @@ const Allslider = () => {
                 <td>{slider.sliderDescription}</td>
                 <td className="space-x-4 w-[260px]">
                   <Link
-                    to={`/admin/updateslider/${slider._id}`}
+                    to={`/user/updateslider/${slider._id}`}
                     className="btn btn-accent"
                   >
                     Update

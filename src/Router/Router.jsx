@@ -10,6 +10,7 @@ import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import UpdateSlider from "../Components/UpdateSlider/UpdateSlider";
 import DashBoard from "../Layout/Admin/DashBoard";
 import BrandProduct from "../Layout/BrandProduct/BrandProduct";
+import CartPage from "../Layout/CartPage/CartPage";
 import ErrorPage from "../Layout/ErrorPage/ErrorPage";
 import Home from "../Layout/Home/Home";
 import PrivateRouter from "../Layout/PrivateRouter/PrivateRouter";
@@ -63,7 +64,7 @@ const Router = createBrowserRouter([
     ],
   },
   {
-    path: "/admin",
+    path: "/user",
     element: (
       <PrivateRouter>
         <DashBoard />
@@ -72,53 +73,59 @@ const Router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/admin/profile",
+        path: "/user/profile",
         element: <Profile />,
       },
       {
-        path: "/admin/allproduct",
+        path: "/user/allproduct",
         element: <AllProduct />,
         loader: () => fetch("https://y-delta-nine.vercel.app/products"),
       },
       {
-        path: "/admin/addproduct",
+        path: "/user/addproduct",
         element: <AddProduct />,
       },
       {
-        path: "/admin/productupdate/:id",
+        path: "/user/productupdate/:id",
         element: <UpdateProduct />,
         loader: ({ params }) =>
           fetch(`https://y-delta-nine.vercel.app/products/${params.id}`),
       },
       {
-        path: "/admin/allbrand",
+        path: "/user/allbrand",
         element: <AllBrand />,
         loader: () => fetch("https://y-delta-nine.vercel.app/brands"),
       },
       {
-        path: "/admin/addbrand",
+        path: "/user/addbrand",
         element: <AddBrand />,
       },
       {
-        path: "/admin/brandupdate/:id",
+        path: "/user/brandupdate/:id",
         element: <UpdateBrand />,
         loader: ({ params }) =>
           fetch(`https://y-delta-nine.vercel.app/brands/${params.id}`),
       },
       {
-        path: "/admin/addslider",
+        path: "/user/addslider",
         element: <AddSlider />,
       },
       {
-        path: "/admin/allslider",
+        path: "/user/allslider",
         element: <Allslider />,
         loader: () => fetch("https://y-delta-nine.vercel.app/sliders"),
       },
       {
-        path: "/admin/updateslider/:id",
+        path: "/user/updateslider/:id",
         element: <UpdateSlider />,
         loader: ({ params }) =>
           fetch(`https://y-delta-nine.vercel.app/sliders/${params.id}`),
+      },
+      {
+        path: "/user/cart/",
+        element: <CartPage/>,
+        loader: () =>
+          fetch("https://y-delta-nine.vercel.app/carts"),
       },
     ],
   },

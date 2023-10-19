@@ -3,7 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, userSignOut } = useContext(AuthContext);
   const navlinks = (
     <>
       <li>
@@ -19,9 +19,6 @@ const Navbar = () => {
           <NavLink to="/signin">Signin</NavLink>
         </li>
       )}
-      <li>
-        <NavLink to="/admin">Dashboard</NavLink>
-      </li>
     </>
   );
   return (
@@ -91,7 +88,7 @@ const Navbar = () => {
               <span className="font-bold text-lg">8 Items</span>
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
+                <Link to="/user/cart" className="btn btn-primary btn-block">View cart</Link>
               </div>
             </div>
           </div>
@@ -99,25 +96,33 @@ const Navbar = () => {
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="https://i.ibb.co/LPY431r/azad.jpg" />
+              <img
+                src={user?.photoURL || "https://i.ibb.co/2ndnLqH/avatar.jpg"}
+              />
             </div>
           </label>
           <ul
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
+            {user ? (
+              <li>
+                <Link to="/user" className="justify-between">
+                  {user?.displayName}
+                  <span className="badge">Profile</span>
+                </Link>
+              </li>
+            ) : (
+              ""
+            )}
+
+            {user ? (
+              <li>
+                <button onClick={() => userSignOut()}>Logout</button>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
       </div>
