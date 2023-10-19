@@ -5,7 +5,7 @@ const Allslider = () => {
   const AllSliders = useLoaderData();
   const [sliders, setSliders] = useState(AllSliders);
   const handleDeleteSlider = (id) => {
-    fetch(`http://localhost:5000/sliders/${id}`, {
+    fetch(`https://y-delta-nine.vercel.app/sliders/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

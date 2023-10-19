@@ -29,7 +29,7 @@ const AddProduct = () => {
       userEmail,
       userId,
     };
-    fetch("http://localhost:5000/products", {
+    fetch("https://y-delta-nine.vercel.app/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",

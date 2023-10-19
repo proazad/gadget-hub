@@ -5,7 +5,7 @@ const AllBrand = () => {
   const AllBrands = useLoaderData();
   const [brands, setBrands] = useState(AllBrands);
   const handleDeleteBrand = (id) => {
-    fetch(`http://localhost:5000/brands/${id}`, {
+    fetch(`https://y-delta-nine.vercel.app/brands/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

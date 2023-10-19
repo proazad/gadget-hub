@@ -21,7 +21,7 @@ const AddSlider = () => {
       userEmail,
       userId,
     };
-    fetch("http://localhost:5000/sliders", {
+    fetch("https://y-delta-nine.vercel.app/sliders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

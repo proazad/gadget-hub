@@ -4,12 +4,12 @@ import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import required modules
 import { useEffect, useState } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Link } from "react-router-dom";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 const Banner = () => {
   const [sliders, setSliders] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/sliders")
+    fetch("https://y-delta-nine.vercel.app/sliders")
       .then((res) => res.json())
       .then((data) => setSliders(data));
   }, []);

@@ -27,7 +27,7 @@ const UpdateProduct = () => {
       productHotSale
     };
     console.log(updatPproduct);
-    fetch(`http://localhost:5000/products/${loadedProduct._id}`, {
+    fetch(`https://y-delta-nine.vercel.app/products/${loadedProduct._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

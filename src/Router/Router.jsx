@@ -9,6 +9,7 @@ import UpdateBrand from "../Components/UpdateBrand/UpdateBrand";
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import UpdateSlider from "../Components/UpdateSlider/UpdateSlider";
 import DashBoard from "../Layout/Admin/DashBoard";
+import BrandProduct from "../Layout/BrandProduct/BrandProduct";
 import ErrorPage from "../Layout/ErrorPage/ErrorPage";
 import Home from "../Layout/Home/Home";
 import PrivateRouter from "../Layout/PrivateRouter/PrivateRouter";
@@ -18,7 +19,6 @@ import Profile from "../Layout/Profile/Profile";
 import Root from "../Layout/Root/Root";
 import Signin from "../Layout/Signin/Signin";
 import Signup from "../Layout/Signup/Signup";
-import BrandProduct from "../Layout/BrandProduct/BrandProduct";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +32,7 @@ const Router = createBrowserRouter([
       {
         path: "/products",
         element: <Products />,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://y-delta-nine.vercel.app/products"),
       },
       {
         path: "/brand/:id",
@@ -46,7 +46,7 @@ const Router = createBrowserRouter([
           </PrivateRouter>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://y-delta-nine.vercel.app/products/${params.id}`),
       },
       {
         path: "/profile",
@@ -78,7 +78,7 @@ const Router = createBrowserRouter([
       {
         path: "/admin/allproduct",
         element: <AllProduct />,
-        loader: () => fetch("http://localhost:5000/products"),
+        loader: () => fetch("https://y-delta-nine.vercel.app/products"),
       },
       {
         path: "/admin/addproduct",
@@ -88,12 +88,12 @@ const Router = createBrowserRouter([
         path: "/admin/productupdate/:id",
         element: <UpdateProduct />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+          fetch(`https://y-delta-nine.vercel.app/products/${params.id}`),
       },
       {
         path: "/admin/allbrand",
         element: <AllBrand />,
-        loader: () => fetch("http://localhost:5000/brands"),
+        loader: () => fetch("https://y-delta-nine.vercel.app/brands"),
       },
       {
         path: "/admin/addbrand",
@@ -103,7 +103,7 @@ const Router = createBrowserRouter([
         path: "/admin/brandupdate/:id",
         element: <UpdateBrand />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/brands/${params.id}`),
+          fetch(`https://y-delta-nine.vercel.app/brands/${params.id}`),
       },
       {
         path: "/admin/addslider",
@@ -112,13 +112,13 @@ const Router = createBrowserRouter([
       {
         path: "/admin/allslider",
         element: <Allslider />,
-        loader: () => fetch("http://localhost:5000/sliders"),
+        loader: () => fetch("https://y-delta-nine.vercel.app/sliders"),
       },
       {
         path: "/admin/updateslider/:id",
         element: <UpdateSlider />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/sliders/${params.id}`),
+          fetch(`https://y-delta-nine.vercel.app/sliders/${params.id}`),
       },
     ],
   },

@@ -21,7 +21,7 @@ const AddBrand = () => {
       userEmail,
       userId,
     };
-    fetch("http://localhost:5000/brands", {
+    fetch("https://y-delta-nine.vercel.app/brands", {
       method: "POST",
       headers: {
         "content-type": "application/json",

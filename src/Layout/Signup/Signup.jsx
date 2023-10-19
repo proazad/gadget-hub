@@ -51,7 +51,7 @@ const Signup = () => {
               lastSignInTime,
               uid,
             };
-            fetch("http://localhost:5000/users", {
+            fetch("https://y-delta-nine.vercel.app/users", {
               method: "POST",
               headers: {
                 "content-type": "application/json",

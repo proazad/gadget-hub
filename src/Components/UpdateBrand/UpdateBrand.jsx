@@ -23,7 +23,7 @@ const UpdateBrand = () => {
       userEmail,
       userId,
     };
-    fetch(`http://localhost:5000/brands/${loadedBrand._id}`, {
+    fetch(`https://y-delta-nine.vercel.app/brands/${loadedBrand._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

@@ -4,7 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 const FeatureProduct = () => {
   const [featureProduct, setfeatureProduct] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://y-delta-nine.vercel.app/products")
       .then((res) => res.json())
       .then((data) => {
         const featuredPro = data.filter((product) => product.productFeatured);
