@@ -1,7 +1,7 @@
 # Brand-Shop
 
 
-## [ Client Side]([https://classroom.github.com/a/AhpcvLRc](https://brand-shop-a485b.web.app/))
+## [ Client Side] ((https://brand-shop-a485b.web.app/))
 
 #Features of this Site 
 1. This is Brand shop web site. There  you can buy digital Gadget
