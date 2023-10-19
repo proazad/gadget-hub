@@ -18,6 +18,7 @@ import Profile from "../Layout/Profile/Profile";
 import Root from "../Layout/Root/Root";
 import Signin from "../Layout/Signin/Signin";
 import Signup from "../Layout/Signup/Signup";
+import BrandProduct from "../Layout/BrandProduct/BrandProduct";
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,10 @@ const Router = createBrowserRouter([
         path: "/products",
         element: <Products />,
         loader: () => fetch("http://localhost:5000/products"),
+      },
+      {
+        path: "/brand/:id",
+        element: <BrandProduct />,
       },
       {
         path: "/products/:id",
