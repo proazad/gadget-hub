@@ -1,9 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
   const { user, userSignOut } = useContext(AuthContext);
+  const userId = user?.uid;
+  const [castsprods, setCartsprods] = useState([]);
+  useEffect(() => {
+    fetch("https://y-delta-nine.vercel.app/carts")
+      .then((res) => res.json())
+      .then((data) => {
+        const userCartProduct = data.filter(
+          (product) => product.userId === userId
+        );
+        setCartsprods(userCartProduct);
+      });
+  }, [userId]);
+  const totalPrice = castsprods.reduce((accumulator, currentProduct) => {
+    return parseInt(accumulator, 10) + parseInt(currentProduct.productPrice);
+  }, 0);
   const navlinks = (
     <>
       <li>
@@ -77,7 +92,9 @@ const Navbar = () => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-sm indicator-item">
+                {castsprods.length}
+              </span>
             </div>
           </label>
           <div
@@ -85,10 +102,14 @@ const Navbar = () => {
             className="mt-3 z-[999] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
+              <span className="font-bold text-lg">
+                {castsprods.length} Items
+              </span>
+              <span className="text-info">Subtotal: {totalPrice}</span>
               <div className="card-actions">
-                <Link to="/user/cart" className="btn btn-primary btn-block">View cart</Link>
+                <Link to="/user/cart" className="btn btn-primary btn-block">
+                  View cart
+                </Link>
               </div>
             </div>
           </div>
@@ -101,29 +122,31 @@ const Navbar = () => {
               />
             </div>
           </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {user ? (
-              <li>
-                <Link to="/user" className="justify-between">
-                  {user?.displayName}
-                  <span className="badge">Profile</span>
-                </Link>
-              </li>
-            ) : (
-              ""
-            )}
+          {user && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              {user ? (
+                <li>
+                  <Link to="/user" className="justify-between">
+                    {user?.displayName}
+                    <span className="badge">Profile</span>
+                  </Link>
+                </li>
+              ) : (
+                ""
+              )}
 
-            {user ? (
-              <li>
-                <button onClick={() => userSignOut()}>Logout</button>
-              </li>
-            ) : (
-              ""
-            )}
-          </ul>
+              {user ? (
+                <li>
+                  <button onClick={() => userSignOut()}>Logout</button>
+                </li>
+              ) : (
+                ""
+              )}
+            </ul>
+          )}
         </div>
       </div>
     </nav>

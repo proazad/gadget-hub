@@ -8,12 +8,15 @@ const CartPage = () => {
   const [products, setproducts] = useState(allproducts);
   const { user } = useContext(AuthContext);
   const userId = user.uid;
+
   const userCartProduct = products.filter(
     (product) => product.userId === userId
   );
+  
   const totalPrice = userCartProduct.reduce((accumulator, currentProduct) => {
     return parseInt(accumulator, 10) + parseInt(currentProduct.productPrice);
   }, 0);
+
   const handleDeleteProductFromCart = (id) => {
     fetch(`https://y-delta-nine.vercel.app/carts/${id}`, {
       method: "DELETE",
@@ -28,13 +31,14 @@ const CartPage = () => {
         }
       });
   };
-  const handleParshase = () =>{
-    swal("Super!","You Purshase product successfully","success");
-  }
+  const handleParshase = () => {
+    swal("Super!", "You Purshase product successfully", "success");
+  };
+
   return (
     <div>
       <h2 className="text-2xl font-semibold">
-        Your Cart have {userCartProduct.length} Product{" "}
+        Your Cart have {userCartProduct.length} Product
       </h2>
       <h2 className="text-2xl font-semibold">Total Price: $ {totalPrice} </h2>
       <table className="table mt-5">
@@ -75,7 +79,12 @@ const CartPage = () => {
           ))}
         </tbody>
       </table>
-     <div className="text-center"> <button onClick={handleParshase} className="btn btn-accent btn-wide">Purshase</button></div>
+      <div className="text-center">
+        {" "}
+        <button onClick={handleParshase} className="btn btn-accent btn-wide">
+          Purshase
+        </button>
+      </div>
     </div>
   );
 };

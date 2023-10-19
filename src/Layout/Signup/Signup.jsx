@@ -1,13 +1,16 @@
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Signup = () => {
   const [showpass, SetShowpass] = useState(false);
+  const location = useLocation();
   const navigate = useNavigate();
-  const { createUser, profileUpdate } = useContext(AuthContext);
+  const { createUser, profileUpdate, signInWithGoogle } =
+    useContext(AuthContext);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -74,6 +77,20 @@ const Signup = () => {
       }
     };
     passwordValidation(password, cpassword);
+  };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((res) => {
+        if(res){
+          swal("Cool!","Successfuly Sign in","success");
+          navigate(location?.state ? location.state : "/");
+        }
+      })
+      .catch((error) => {
+        if(error){
+          swal("Opps!","Something went wrong, Try Again Later!","error");
+        }
+      });
   };
   return (
     <div className="bg-emerald-400">
@@ -197,9 +214,17 @@ const Signup = () => {
             <div className="form-control mt-3">
               <p>
                 Already have account, Please{" "}
-                <Link to="/signup" className="underline">
+                <Link to="/signin" className="underline">
                   Sign in
                 </Link>
+              </p>
+            </div>
+            <div className="form-control mt-5">
+              <p
+                onClick={handleGoogleSignIn}
+                className="btn flex items-center justify-center gap-5 text-2xl"
+              >
+                Continue With Google <FcGoogle />
               </p>
             </div>
           </form>

@@ -25,9 +25,15 @@ const ProductCard = ({ product }) => {
       </div>
       <div className="p-3 flex-grow">
         <h3 className="text-lg font-semibold">{productName}</h3>
-        <h3 className="text-lg text-accent font-semibold">${productPrice}</h3>
+        <h3 className="text-lg flex text-accent font-semibold">
+          ${productPrice}
+          
+        </h3>
       </div>
-      <Link to={`/products/${_id}`} className="flex px-5 justify-between text-white py-5 rounded-b-xl bg-accent">
+      <Link
+        to={`/products/${_id}`}
+        className="flex px-5 justify-between text-white py-5 rounded-b-xl bg-accent"
+      >
         <span className="text-xl">View Details</span>
         <BsCartPlus className="text-xl" />
       </Link>

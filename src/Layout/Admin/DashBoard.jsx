@@ -10,8 +10,8 @@ const DashBoard = () => {
     <div className="bg-blue-100">
       <div className="container mx-auto">
         <Navbar />
-        <div className="grid grid-cols-1 lg:grid-cols-4 py-20 gap-5">
-          <div className="col-span-1 border border-blue-400 rounded-xl p-4">
+        <div className="grid grid-cols-1 lg:grid-cols-6 py-20 gap-5">
+          <div className="col-span-2 border border-blue-400 rounded-xl p-4">
             <div className="flex items-center   gap-4 mb-20">
               <div className="avatar">
                 <div className="w-16 rounded-full ring ring-accent ring-offset-base-100 ring-offset-2">
@@ -33,7 +33,7 @@ const DashBoard = () => {
             </div>
             <RightSidebar />
           </div>
-          <div className="col-span-3 border border-blue-400 rounded-xl p-4">
+          <div className="col-span-4 border border-blue-400 rounded-xl p-4">
             <Outlet />
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { FcGoogle } from "react-icons/fc";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
@@ -6,7 +7,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 const Signin = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userSignIn } = useContext(AuthContext);
+  const { userSignIn,signInWithGoogle } = useContext(AuthContext);
   const [showpass, SetShowpass] = useState(false);
   const handleRegistrationUser = (e) => {
     e.preventDefault();
@@ -26,6 +27,21 @@ const Signin = () => {
           "Something went wrong, email/password not Valid!",
           "error"
         );
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then((res) => {
+        if(res){
+          swal("Cool!","Successfuly Sign in","success");
+          navigate(location?.state ? location.state : "/");
+        }
+      })
+      .catch((error) => {
+        if(error){
+          swal("Opps!","Something went wrong, Try Again Later!","error");
+        }
       });
   };
   return (
@@ -80,6 +96,14 @@ const Signin = () => {
                 <Link to="/signup" className="underline">
                   Sign up
                 </Link>
+              </p>
+            </div>
+            <div className="form-control mt-5">
+              <p
+                onClick={handleGoogleSignIn}
+                className="btn flex items-center justify-center gap-5 text-2xl"
+              >
+                Continue With Google <FcGoogle />
               </p>
             </div>
           </form>

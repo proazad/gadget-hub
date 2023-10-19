@@ -80,7 +80,7 @@ const RightSidebar = () => {
           <details>
             <summary className="text-xl bg-neutral text-white font-bold">
               <BiCarousel />
-              Slider
+              Home Slider
             </summary>
             <ul className="p-2">
               <li>

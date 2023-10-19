@@ -41,9 +41,29 @@ const BrandProduct = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          <SwiperSlide>Slide 1</SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
+          <SwiperSlide>
+            <div className="relative">
+              <img
+                src="https://i.ibb.co/b1pFHRy/main-home-rev-img-2.jpg"
+                alt=""
+              />
+              <div className="absolute left-0 top-20">
+                <h2 className="text-4xl">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio autem voluptate saepe ipsum illo voluptates unde, </h2>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://i.ibb.co/b1pFHRy/main-home-rev-img-2.jpg"
+              alt=""
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://i.ibb.co/b1pFHRy/main-home-rev-img-2.jpg"
+              alt=""
+            />
+          </SwiperSlide>
         </Swiper>
       </div>
       <h2 className="text-4xl font-bold">{id}</h2>
