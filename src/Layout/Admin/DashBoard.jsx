@@ -26,8 +26,7 @@ const DashBoard = () => {
                 <h2 className="text-2xl font-bold text-neutral">
                   {user.displayName}
                 </h2>
-                <h3 className="text-xl font-semibold text-neutral">Admin</h3>
-                <h3 className="text-xl font-semibold text-neutral">
+                <h3 className="text-lg  text-neutral">
                   {user.email}
                 </h3>
               </div>

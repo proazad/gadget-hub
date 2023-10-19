@@ -4,13 +4,16 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <div className="flex-1">
-        <Link to="/" className="font-bold normal-case text-xl">Gadget<span className="text-accent">Hub</span></Link>
+        <Link to="/" className="font-bold normal-case text-xl">
+          <img
+            src="https://i.ibb.co/jvh3JxB/logo.png"
+            className="w-24"
+            alt=""
+          />
+        </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <Link to="/admin">DashBoard</Link>
-          </li>
           <li>
             <Link to="/">Home</Link>
           </li>

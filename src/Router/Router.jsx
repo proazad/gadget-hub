@@ -12,6 +12,8 @@ import DashBoard from "../Layout/Admin/DashBoard";
 import ErrorPage from "../Layout/ErrorPage/ErrorPage";
 import Home from "../Layout/Home/Home";
 import PrivateRouter from "../Layout/PrivateRouter/PrivateRouter";
+import ProductDetails from "../Layout/ProductDetails/ProductDetails";
+import Products from "../Layout/Products/Products";
 import Profile from "../Layout/Profile/Profile";
 import Root from "../Layout/Root/Root";
 import Signin from "../Layout/Signin/Signin";
@@ -25,6 +27,21 @@ const Router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/products",
+        element: <Products />,
+        loader: () => fetch("http://localhost:5000/products"),
+      },
+      {
+        path: "/products/:id",
+        element: (
+          <PrivateRouter>
+            <ProductDetails />
+          </PrivateRouter>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/profile",

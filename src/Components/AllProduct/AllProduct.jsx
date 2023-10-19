@@ -30,6 +30,7 @@ const AllProduct = () => {
               <th>Image</th>
               <th>Name</th>
               <th>Price</th>
+              <th>Featured</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -46,6 +47,7 @@ const AllProduct = () => {
                 </td>
                 <td>{product.productName}</td>
                 <td>{product.productPrice}</td>
+                <td>{product.productFeatured}</td>
                 <td className="space-x-4 w-[260px]">
                   <Link
                     to={`/admin/productupdate/${product._id}`}

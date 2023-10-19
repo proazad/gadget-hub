@@ -1,24 +1,31 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Navbar = () => {
+  const { user } = useContext(AuthContext);
   const navlinks = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/product">Add Product</NavLink>
+        <NavLink to="/products">Product</NavLink>
       </li>
-      <li>
-        <NavLink to="/signin">Signin</NavLink>
-      </li>
+      {user ? (
+        ""
+      ) : (
+        <li>
+          <NavLink to="/signin">Signin</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to="/admin">Dashboard</NavLink>
       </li>
     </>
   );
   return (
-    <nav className="navbar bg-base-100">
+    <nav className="container mx-auto navbar bg-base-100">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,13 +46,17 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[99] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navlinks}
           </ul>
         </div>
         <Link to="/" className="font-bold normal-case text-xl">
-          Gadget<span className="text-accent">Hub</span>
+          <img
+            src="https://i.ibb.co/jvh3JxB/logo.png"
+            className="w-24"
+            alt=""
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -74,7 +85,7 @@ const Navbar = () => {
           </label>
           <div
             tabIndex={0}
-            className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
+            className="mt-3 z-[999] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
               <span className="font-bold text-lg">8 Items</span>
@@ -93,7 +104,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[999] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
               <a className="justify-between">

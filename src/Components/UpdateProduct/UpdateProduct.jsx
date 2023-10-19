@@ -13,6 +13,8 @@ const UpdateProduct = () => {
     const productRating = form.get("productRating").trim();
     const productImage = form.get("productImage").trim();
     const productDescription = form.get("productDescription").trim();
+    const productFeatured = form.get("productFeatured");
+    const productHotSale = form.get("productHotSale");
     const updatPproduct = {
       productName,
       brandName,
@@ -21,7 +23,10 @@ const UpdateProduct = () => {
       productRating,
       productImage,
       productDescription,
+      productFeatured,
+      productHotSale
     };
+    console.log(updatPproduct);
     fetch(`http://localhost:5000/products/${loadedProduct._id}`, {
       method: "PUT",
       headers: {
@@ -126,6 +131,7 @@ const UpdateProduct = () => {
             />
             <span className="text-red-700 text-2xl absolute right-0">*</span>
           </div>
+
           <div className="form-control w-full relative">
             <label htmlFor="productImage" className="font-medium font-xl">
               Product Image
@@ -153,6 +159,28 @@ const UpdateProduct = () => {
             defaultValue={loadedProduct.productDescription}
           ></textarea>
           <span className="text-red-700 text-2xl absolute right-0">*</span>
+        </div>
+        <div className="flex gap-5 mt-3">
+          <div className="form-control">
+            <label className="cursor-pointer label">
+              <span className="label-text text-xl mr-4">Is Featured?</span>
+              <input
+                type="checkbox"
+                name="productFeatured"
+                className="checkbox checkbox-accent"
+              />
+            </label>
+          </div>
+          <div className="form-control">
+            <label className="cursor-pointer label">
+              <span className="label-text text-xl mr-4">Hot Sale?</span>
+              <input
+                type="checkbox"
+                name="productHotSale"
+                className="checkbox checkbox-accent"
+              />
+            </label>
+          </div>
         </div>
         <div className="form-control mt-3">
           <button type="submit" className="btn btn-accent">
