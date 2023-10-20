@@ -2,6 +2,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 // import required modules
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -14,7 +15,7 @@ const Banner = () => {
       .then((data) => setSliders(data));
   }, []);
   return (
-    <div className="bg-[#f3f6fb] mb-10">
+    <div className="mb-10">
       <div className="container mx-auto">
         <Swiper
           spaceBetween={30}
@@ -31,18 +32,19 @@ const Banner = () => {
           className="mySwiper"
         >
           {sliders.map((slider) => (
-            <SwiperSlide key={slider._id}>
-              <div className="grid grid-cols-4 items-center  px-20  bg-right">
-                <div className="col-span-1 text-neutral">
-                  <h2 className="text-4xl font-bold">{slider.sliderTitle}</h2>
-                  <h2 className="text-lg">
-                    {slider.sliderDescription}
-                  </h2>
-                  <Link to="/products" className="btn btn-accent mt-5">Shop Now</Link>
-                </div>
-                <div className="col-span-3">
-                  <img src={slider.sliderImage} alt="" />
-                </div>
+            <SwiperSlide key={slider._id} className="bg-[#f3f6fb]">
+              <img
+                src={slider.sliderImage}
+                alt=""
+              />
+              <div className="absolute w-full flex items-center justify-center flex-col px-8 lg:px-20 py-40 ">
+                <h2 className="text-2xl lg:text-5xl mb-5 font-bold text-accent">
+                {slider.sliderTitle}
+                </h2>
+                <h2 className="text-lg lg:text-3xl font-semibold text-black">
+                {slider.sliderDescription}
+                </h2>
+                <Link to="/products" className="btn btn-accent mt-5">Shop Now</Link>
               </div>
             </SwiperSlide>
           ))}

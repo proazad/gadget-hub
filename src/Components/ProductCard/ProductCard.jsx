@@ -4,7 +4,7 @@ import { BsCartPlus } from "react-icons/bs";
 import { MdCompareArrows } from "react-icons/md";
 import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
-  const { _id, productName, brandName, productImage, productPrice } = product;
+  const { _id, productName, brandName, productImage, productPrice, productRating } = product;
   const handleFavorite = (product) => {
     console.log(product);
   };
@@ -27,7 +27,9 @@ const ProductCard = ({ product }) => {
         <h3 className="text-lg font-semibold">{productName}</h3>
         <h3 className="text-lg flex text-accent font-semibold">
           ${productPrice}
-          
+        </h3>
+        <h3 className="text-lg flex text-accent font-semibold">
+          Ratings: {productRating}
         </h3>
       </div>
       <Link

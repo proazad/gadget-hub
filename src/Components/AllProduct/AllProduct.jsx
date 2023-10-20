@@ -34,7 +34,7 @@ const AllProduct = () => {
               <th>Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="w-full">
             {products.map((product, idx) => (
               <tr key={product._id}>
                 <th>{idx + 1}</th>
@@ -48,16 +48,16 @@ const AllProduct = () => {
                 <td>{product.productName}</td>
                 <td>{product.productPrice}</td>
                 <td>{product.productFeatured}</td>
-                <td className="space-x-4 w-[260px]">
+                <td className="flex flex-col lg:flex-row space-x-4">
                   <Link
                     to={`/user/productupdate/${product._id}`}
-                    className="btn btn-accent"
+                    className="btn btn-sm btn-accent"
                   >
                     Update
                   </Link>
                   <button
                     onClick={() => handleDeleteProduct(product._id)}
-                    className="btn btn-error"
+                    className="btn btn-sm btn-error"
                   >
                     Delete
                   </button>

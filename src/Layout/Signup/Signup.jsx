@@ -94,8 +94,8 @@ const Signup = () => {
   };
   return (
     <div className="bg-emerald-400">
-      <div className="container mx-auto py-20">
-        <div className="w-full lg:w-6/12 border rounded-lg mx-auto filter bg-slate-200/20 p-20">
+      <div className="container mx-auto py-5 lg:py-20 px-5 lg:px-0">
+        <div className="w-full lg:w-6/12 border rounded-lg mx-auto filter bg-slate-200/20 p-5 lg:p-20">
           <h2 className="text-4xl font-bold uppercase">Please Sign up</h2>
           <form onSubmit={handleRegistrationUser}>
             <div className="form-control mt-3 relative">
@@ -222,7 +222,7 @@ const Signup = () => {
             <div className="form-control mt-5">
               <p
                 onClick={handleGoogleSignIn}
-                className="btn flex items-center justify-center gap-5 text-2xl"
+                className="btn flex items-center justify-center gap-3 lg:gap-5 text-xl lg:text-2xl"
               >
                 Continue With Google <FcGoogle />
               </p>

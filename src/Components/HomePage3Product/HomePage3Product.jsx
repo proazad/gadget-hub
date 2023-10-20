@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HomePage3Product = () => {
   return (
     <div className="container mx-auto my-20">
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-7 px-5 lg:px-0">
         <div
           className="bg-cover py-8 rounded-lg px-5"
           style={{

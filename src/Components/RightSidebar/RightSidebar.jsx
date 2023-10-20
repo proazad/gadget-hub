@@ -98,7 +98,35 @@ const RightSidebar = () => {
                   className="px-3 text-xl flex gap-4 items-center font-bold"
                 >
                   <MdAddTask />
-                  Add New Product
+                  Add New Slider
+                </NavLink>
+              </li>
+            </ul>
+          </details>
+        </li>
+        <li tabIndex={0}>
+          <details>
+            <summary className="text-xl bg-neutral text-white font-bold">
+              <BiCarousel />
+              Brand Slider
+            </summary>
+            <ul className="p-2">
+              <li>
+                <NavLink
+                  to="/user/allbrandslider"
+                  className="px-3 text-xl flex gap-4 items-center font-bold"
+                >
+                  <BsWallet2 />
+                  All Slider
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/user/addbrandslider"
+                  className="px-3 text-xl flex gap-4 items-center font-bold"
+                >
+                  <MdAddTask />
+                  Add New Slider
                 </NavLink>
               </li>
             </ul>

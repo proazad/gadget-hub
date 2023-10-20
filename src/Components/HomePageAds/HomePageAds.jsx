@@ -37,14 +37,14 @@ const HomePageAds = () => {
                 src={slider.image}
                 alt=""
               />
-              <div className="absolute w-full h-40 flex items-center justify-center flex-col px-20 bg-violet-600/25">
-                <h2 className="text-5xl font-bold text-accent">
+              <div className="absolute w-full flex items-center justify-center flex-col py-20 px-10 lg:px-20 bg-violet-600/25">
+                <h2 className="text-2xl lg:text-5xl font-bold text-accent">
                 {slider.title}
                 </h2>
-                <h2 className="text-3xl font-bold text-neutral">
+                <h2 className="text-xl lg:text-3xl font-bold text-neutral">
                 {slider.description}
                 </h2>
-                <h2 className="text-3xl font-bold text-accent">
+                <h2 className="text-lg lg:text-3xl font-bold text-accent">
                 ${slider.price}
                 </h2>
               </div>

@@ -41,7 +41,7 @@ const CartPage = () => {
         Your Cart have {userCartProduct.length} Product
       </h2>
       <h2 className="text-2xl font-semibold">Total Price: $ {totalPrice} </h2>
-      <table className="table mt-5">
+      <table className="table w-full mt-5">
         {/* head */}
         <thead>
           <tr>
@@ -49,11 +49,10 @@ const CartPage = () => {
             <th>Image</th>
             <th>Name</th>
             <th>Price</th>
-            <th>Total Price</th>
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="w-full">
           {userCartProduct.map((product, idx) => (
             <tr key={product._id}>
               <th>{idx + 1}</th>
@@ -66,8 +65,7 @@ const CartPage = () => {
               </td>
               <td>{product.productName}</td>
               <td>{product.productPrice}</td>
-              <td>{product.productFeatured}</td>
-              <td className="space-x-4 w-[260px]">
+              <td className="space-x-4 w-full lg:w-[260px]">
                 <button
                   onClick={() => handleDeleteProductFromCart(product._id)}
                   className="btn btn-error"

@@ -1,11 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import AddBrand from "../Components/AddBrand/AddBrand";
+import AddBrandSlider from "../Components/AddBrandSlider/AddBrandSlider";
 import AddProduct from "../Components/AddProduct/AddProduct";
 import AddSlider from "../Components/AddSlider/AddSlider";
 import AllBrand from "../Components/AllBrand/AllBrand";
+import AllBrandSlider from "../Components/AllBrandSlider/AllBrandSlider";
 import AllProduct from "../Components/AllProduct/AllProduct";
 import Allslider from "../Components/Allslider/Allslider";
 import UpdateBrand from "../Components/UpdateBrand/UpdateBrand";
+import UpdateBrandSlider from "../Components/UpdateBrandSlider/UpdateBrandSlider";
 import UpdateProduct from "../Components/UpdateProduct/UpdateProduct";
 import UpdateSlider from "../Components/UpdateSlider/UpdateSlider";
 import DashBoard from "../Layout/Admin/DashBoard";
@@ -106,6 +109,7 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://y-delta-nine.vercel.app/brands/${params.id}`),
       },
+
       {
         path: "/user/addslider",
         element: <AddSlider />,
@@ -121,11 +125,28 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://y-delta-nine.vercel.app/sliders/${params.id}`),
       },
+
       {
         path: "/user/cart/",
         element: <CartPage/>,
         loader: () =>
           fetch("https://y-delta-nine.vercel.app/carts"),
+      },
+
+      {
+        path: "/user/addbrandslider",
+        element: <AddBrandSlider />,
+      },
+      {
+        path: "/user/allbrandslider",
+        element: <AllBrandSlider />,
+        loader: () => fetch("https://y-delta-nine.vercel.app/brandsliders"),
+      },
+      {
+        path: "/user/updatebrandslider/:id",
+        element: <UpdateBrandSlider />,
+        loader: ({ params }) =>
+          fetch(`https://y-delta-nine.vercel.app/brandsliders/${params.id}`),
       },
     ],
   },
