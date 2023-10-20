@@ -14,7 +14,6 @@ import app from "../Firebase/Firebase.config";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
   const [loading, setLoading] = useState(true);
   const auth = getAuth(app);
   const googlPprovider = new GoogleAuthProvider();

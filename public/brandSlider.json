@@ -1,0 +1,29 @@
+[
+  {
+    "_id": 1,
+    "title": "Xaomi Air Book",
+    "price": "400",
+    "image": "https://i.ibb.co/b1pFHRy/main-home-rev-img-2.jpg",
+    "description": "With 2k OLED Display",
+    "brand": "Xaomi",
+    "category": "Laptop"
+  },
+  {
+    "_id": 2,
+    "title": "Headphones",
+    "price": "200",
+    "image": "https://i.ibb.co/TPSNvGy/main-home-banner-slider-photo-2.jpg",
+    "description": "For Music & Gaming",
+    "brand": "Sony",
+    "category": "Headphone"
+  },
+  {
+    "_id": 3,
+    "title": "Drone Mini",
+    "price": "500",
+    "image": "https://i.ibb.co/4YvnQ9t/main-home-banner-slider-photo-3.jpg",
+    "description": "For Music & Gaming",
+    "brand": "Dji",
+    "category": "Drone Camera"
+  }
+]

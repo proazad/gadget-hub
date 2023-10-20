@@ -34,6 +34,11 @@ const Navbar = () => {
           <NavLink to="/signin">Signin</NavLink>
         </li>
       )}
+      {user ?  (
+        <li>
+          <NavLink to="/user/cart">My Cart</NavLink>
+        </li>
+      ): ""}
     </>
   );
   return (
