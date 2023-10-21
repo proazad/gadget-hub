@@ -1,22 +1,37 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-
+import swal from "sweetalert";
 const AllProduct = () => {
   const allProducts = useLoaderData();
   const [products, setproducts] = useState(allProducts);
-  const handleDeleteProduct = (id) => {
-    fetch(`https://y-delta-nine.vercel.app/products/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          const remainProduct = products.filter(
-            (product) => product._id !== id
-          );
-          setproducts(remainProduct);
-        }
-      });
+  const handleDeleteProduct = async (id) => {
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this product!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://y-delta-nine.vercel.app/products/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remainProduct = products.filter(
+                (product) => product._id !== id
+              );
+              setproducts(remainProduct);
+              swal("Poof! Your produc  has been deleted!", {
+                icon: "success",
+              });
+            }
+          });
+      } else {
+        swal("Your product is safe!");
+      }
+    });
   };
   return (
     <div>

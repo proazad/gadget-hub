@@ -1,45 +1,60 @@
 import PropTypes from "prop-types";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsCartPlus } from "react-icons/bs";
-import { MdCompareArrows } from "react-icons/md";
+import { useState } from "react";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineStar,
+  AiTwotoneStar,
+} from "react-icons/ai";
+import Rating from "react-rating";
 import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
-  const { _id, productName, brandName, productImage, productPrice, productRating } = product;
-  const handleFavorite = (product) => {
-    console.log(product);
-  };
+  const [fav, setFav] = useState(false);
+  const {
+    _id,
+    productName,
+    brandName,
+    productImage,
+    productPrice,
+    productRating,
+  } = product;
+
   return (
-    <div className=" h-full border rounded-xl shadow-sm flex flex-col flex-end">
-      <div className="flex justify-between p-3">
-        <h4 className="text-accent font-medium">{brandName}</h4>
-        <p className="space-y-4">
-          <AiOutlineHeart
-            onClick={() => handleFavorite(product)}
-            className="cursor-pointer text-xl"
-          />
-          <MdCompareArrows className="cursor-pointer text-xl" />
-        </p>
+    <article className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
+      <p onClick={() => setFav(!fav)} className="space-y-4">
+        {fav ? (
+          <AiFillHeart className="cursor-pointer text-red-600 text-xl" />
+        ) : (
+          <AiOutlineHeart className="cursor-pointer text-xl" />
+        )}
+      </p>
+      <div className="relative flex items-center justify-center overflow-hidden rounded-xl">
+        <img src={productImage} alt={productName} className="h-40" />
       </div>
-      <div className="flex flex-grow p-5 items-center justify-center">
-        <img src={productImage} className="w-auto h-40" alt={productName} />
+      <div className="mt-1 p-2 flex-grow ">
+        <div className="">
+          <h2 className="text-slate-700">{productName}</h2>
+          <p className="mt-1 text-sm text-accent">{brandName}</p>
+          <p className="mt-1 text-sm text-orange-600">
+            <Rating
+              initialRating={productRating}
+              emptySymbol={<AiOutlineStar />}
+              fullSymbol={<AiTwotoneStar />}
+              readonly
+            />{" "}
+            {productRating}
+          </p>
+        </div>
+        <div className="mt-3 flex items-end justify-between">
+          <p className="text-lg font-bold text-accent">${productPrice}</p>
+          <div className="flex items-center space-x-1.5 rounded-lg bg-accent px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
+            <Link to={`/products/${_id}`}>
+              <button className="text-sm">View Details</button>
+            </Link>
+          </div>
+        </div>
       </div>
-      <div className="p-3 flex-grow">
-        <h3 className="text-lg font-semibold">{productName}</h3>
-        <h3 className="text-lg flex text-accent font-semibold">
-          ${productPrice}
-        </h3>
-        <h3 className="text-lg flex text-accent font-semibold">
-          Ratings: {productRating}
-        </h3>
-      </div>
-      <Link
-        to={`/products/${_id}`}
-        className="flex px-5 justify-between text-white py-5 rounded-b-xl bg-accent"
-      >
-        <span className="text-xl">View Details</span>
-        <BsCartPlus className="text-xl" />
-      </Link>
-    </div>
+    </article>
   );
 };
 

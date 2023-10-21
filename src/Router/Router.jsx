@@ -41,6 +41,7 @@ const Router = createBrowserRouter([
       {
         path: "/brand/:id",
         element: <BrandProduct />,
+        loader: () => fetch("https://y-delta-nine.vercel.app/brandsliders"),
       },
       {
         path: "/products/:id",
@@ -128,9 +129,8 @@ const Router = createBrowserRouter([
 
       {
         path: "/user/cart/",
-        element: <CartPage/>,
-        loader: () =>
-          fetch("https://y-delta-nine.vercel.app/carts"),
+        element: <CartPage />,
+        loader: () => fetch("https://y-delta-nine.vercel.app/carts"),
       },
 
       {

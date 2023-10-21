@@ -1,7 +1,9 @@
 import { useContext } from "react";
+import { AiOutlineStar, AiTwotoneStar } from "react-icons/ai";
+import Rating from "react-rating";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
 import swal from "sweetalert";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const ProductDetails = () => {
   const product = useLoaderData();
@@ -45,6 +47,15 @@ const ProductDetails = () => {
               {product?.brandName}
             </span>
           </h3>
+          <p className="text-orange-500 text-xl">
+          <Rating
+            initialRating={product.productRating}
+            emptySymbol={<AiOutlineStar />}
+            fullSymbol={<AiTwotoneStar />}
+            readonly
+          />{" "}
+          {product.productRating}
+          </p>
           <h3 className="text-xl font-semibold">
             Price:{" "}
             <span className="font-normal text-accent">

@@ -1,20 +1,38 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import swal from "sweetalert";
 
 const Allslider = () => {
   const AllSliders = useLoaderData();
   const [sliders, setSliders] = useState(AllSliders);
   const handleDeleteSlider = (id) => {
-    fetch(`https://y-delta-nine.vercel.app/sliders/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          const remainslider = sliders.filter((slider) => slider._id !== id);
-          setSliders(remainslider);
-        }
-      });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this imaginary file!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://y-delta-nine.vercel.app/sliders/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remainslider = sliders.filter(
+                (slider) => slider._id !== id
+              );
+              setSliders(remainslider);
+              swal("Poof! Your imaginary file has been deleted!", {
+                icon: "success",
+              });
+            }
+          });
+      } else {
+        swal("Your imaginary file is safe!");
+      }
+    });
   };
   return (
     <div>

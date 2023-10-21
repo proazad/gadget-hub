@@ -1,20 +1,36 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
+import swal from "sweetalert";
 
 const AllBrand = () => {
   const AllBrands = useLoaderData();
   const [brands, setBrands] = useState(AllBrands);
   const handleDeleteBrand = (id) => {
-    fetch(`https://y-delta-nine.vercel.app/brands/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.deletedCount > 0) {
-          const remainbrand = brands.filter((brand) => brand._id !== id);
-          setBrands(remainbrand);
-        }
-      });
+    swal({
+      title: "Are you sure?",
+      text: "Once deleted, you will not be able to recover this Brand!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`https://y-delta-nine.vercel.app/brands/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              const remainbrand = brands.filter((brand) => brand._id !== id);
+              setBrands(remainbrand);
+              swal("Poof! Your Brand has been deleted!", {
+                icon: "success",
+              });
+            }
+          });
+      } else {
+        swal("Your Brand is safe!");
+      }
+    });
   };
   return (
     <div>
