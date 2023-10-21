@@ -92,11 +92,15 @@ const AddProduct = () => {
               className="select select-bordered select-info w-full"
             >
               <option disabled>Select Product Categroy</option>
-              <option value="computer">DeshTop</option>
+              <option value="computer">Desktop</option>
               <option value="laptop">Laptop</option>
               <option value="mobile">Mobile</option>
               <option value="camera">Camera</option>
-              <option value="headphone">Headphone</option>
+              <option value="printer">Printer</option>
+              <option value="scaner">Scaner</option>
+              <option value="Drone">Drone</option>
+              <option value="watch">Watch</option>
+              <option value="others">Others</option>
             </select>
             <span className="text-red-700 text-2xl absolute right-0">*</span>
           </div>
