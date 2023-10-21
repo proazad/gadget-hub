@@ -95,6 +95,11 @@ const UpdateProduct = () => {
               <option value="mobile">Mobile</option>
               <option value="camera">Camera</option>
               <option value="headphone">Headphone</option>
+              <option value="printer">Printer</option>
+              <option value="scaner">Scaner</option>
+              <option value="Drone">Drone</option>
+              <option value="watch">Watch</option>
+              <option value="others">Others</option>
             </select>
             <span className="text-red-700 text-2xl absolute right-0">*</span>
           </div>
