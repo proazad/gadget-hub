@@ -56,11 +56,8 @@ const BrandProduct = () => {
               <h2 className="text-2xl lg:text-5xl font-bold text-accent">
               {slider.sliderTitle}
               </h2>
-              <h2 className="text-xl lg:text-3xl font-bold text-neutral">
+              <h2 className="text-xl lg:text-3xl font-bold text-white">
               {slider.sliderDescription}
-              </h2>
-              <h2 className="text-lg lg:text-3xl font-bold text-accent">
-              ${slider.price}
               </h2>
             </div>
           </SwiperSlide>
@@ -72,7 +69,7 @@ const BrandProduct = () => {
         {brandProducts?.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}
-        {brandSlider.length === 0 && (
+        {brandProducts.length === 0 && (
           <h2 className="col-span-4 text-2xl lg:text-4xl text-center">
             No Product Found under this Brand
           </h2>
