@@ -1,7 +1,7 @@
 # Brand-Shop
 
 
-## [ Client Side] ((https://brand-shop-a485b.web.app/))
+## Live Site link : [https://brandshop-azad.surge.sh/]
 
 #Features of this Site 
 1. This is Brand shop web site. There  you can buy digital Gadget
@@ -15,4 +15,11 @@
 9. Our Product Details Router is private, if user not logged in user can not visit this router.
 10. If user want to  sign up with duplicate email it not possible. beacuse duplacate email resticted by firebase. 
 
+
+
+# Technology 
+ - React JS
+ - Firebase
+ - Tailwind CSS
+   
 
